@@ -15,27 +15,7 @@ get_header();?>
 				<div class="about-container" id="tab1">
 			 		<div class="col-xs-12 col-sm-12 col-md-12">
 						<div class="products-enquiry">
-							<form action="">
-								<?php
-						$the_slug = 'contact';
-						$args = array(
-						  'name'        => $the_slug,
-						  'post_type'   => 'article',
-						  'post_status' => 'publish',
-						  'numberposts' => 1
-						);
-						$contact = get_posts($args)[0];
-						$content = apply_filters('the_content', $contact->post_content); ?>
-
-
-					  	
-								<input type="text" name="name" placeholder="Name"/>
-								<input type="text" name="email" placeholder="Email"/>
-								<input type="text" name="number" placeholder="Number"/>
-								<input type="text" name="location" placeholder="Location"/>
-								<textarea name="" id="" cols="30" rows="10" placeholder="ENTER Product names and quantity here"></textarea>
-								<input type="button" value="Submit" class="products-submit"/>
-							</form>
+						<?php echo do_shortcode( '[contact-form-7 id="79" title="ram"]' ); ?>
 						</div>					  		
 					</div>
 				</div>
