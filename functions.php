@@ -528,8 +528,8 @@ function general_options_callback() {
 function logo_image_callback($args) {
     $html = '<img class="theme_options_logo" src="'. get_option('logo_image') . '">';
     $html .= '<input id="logo_image" class="facebook-url regular-text" type="hidden" name="logo_image" value="' . get_option('logo_image') . '" />';
-    $html .= '<p class="option-hint">' . $args[0] . '</p>';
     $html .= '<button class="upload_logo_button button button-primary">Upload</button>';
+    $html .= '<p class="option-hint">' . $args[0] . '</p>';
     echo $html;
 }
 
@@ -537,8 +537,8 @@ function logo_image_callback($args) {
 function homepage_slider_bg_img_callback($args) {
     $html = '<img class="theme_options_bg" src="'. get_option('homepage_slider_bg_img') . '">';
     $html .= '<input id="homepage_slider_bg_img" class="facebook-url regular-text" type="hidden" name="homepage_slider_bg_img" value="' . get_option('homepage_slider_bg_img') . '" />';
-    $html .= '<p class="option-hint">' . $args[0] . '</p>';
     $html .= '<button class="upload_bg_button button button-primary">Upload</button>';
+    $html .= '<p class="option-hint">' . $args[0] . '</p>';
     echo $html;
 }
 
