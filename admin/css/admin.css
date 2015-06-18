@@ -1,0 +1,12 @@
+.wrap img{
+	max-width: 80%;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.form-table td p.option-hint {
+  font-size: 13px;
+  font-style: italic;
+  opacity: .6;
+  margin-bottom: 10px;
+}
