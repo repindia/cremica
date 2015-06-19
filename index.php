@@ -131,43 +131,30 @@
 				  	<div class="welcome-heading">
 				  		<h1>Our Products</h1>
 				  	</div>
-					<div class="product-container">
+				  	<div class="product-container">
+				  	
+				  	<?php 
+					$args = array(
+						'category' => get_query_var('cat'),
+						'numberposts' => 4
+					);
+
+				 	$products = get_posts($args);
+			
+					foreach ($products as $product) { ?>
+					
 					  <div class="col-sm-6 col-md-3">
 					    <div class="thumbnail">
-					      <a href="#"><img src="<?php echo get_template_directory_uri();?>/images/home/thousand.png" alt="thousand"></a>
+					    	<?php  $url = wp_get_attachment_url( get_post_thumbnail_id($product->ID) ); ?>	
+					      	<a href="<?php echo bloginfo('url');?>/category/products"><img src="<?php echo $url; ?>" alt="thousand"></a>
 					    </div>
 					     <div class="caption">
-					        <h3>Our Delicious <br>Thousand Island Dressing</h3>
-					        <p><a href="#" class="btn btn-primary" role="button">Know More</a> </p>
+					        <h3><?php echo $product->post_title;?></h3>
+					        <p><a href="<?php echo bloginfo('url');?>/category/products" class="btn btn-primary" role="button">Know More</a> </p>
 					      </div>
 					  </div>
-					   <div class="col-sm-6 col-md-3">
-					    <div class="thumbnail">
-					      <a href=""><img src="<?php echo get_template_directory_uri();?>/images/home/opera-chips.png" alt="thousand"></a>
-					    </div>
-					     <div class="caption">
-					        <h3>Opera </h3>
-					        <p><a href="#" class="btn btn-primary" role="button">Know More</a> </p>
-					      </div>
-					  </div>
-					   <div class="col-sm-6 col-md-3">
-					    <div class="thumbnail">
-					      <a href=""><img src="<?php echo get_template_directory_uri();?>/images/home/chilli-garlic.png" alt="thousand"></a>
-					    </div>
-					      <div class="caption">
-					        <h3>Chilli Garlic <br>Dip</h3>
-					        <p><a href="#" class="btn btn-primary" role="button">Know More</a> </p>
-					      </div>
-					  </div>
-					   <div class="col-sm-6 col-md-3">
-					    <div class="thumbnail">
-					      <a href=""><img src="<?php echo get_template_directory_uri();?>/images/home/chilli-garlic.png" alt="thousand"></a>
-					    </div>
-					     <div class="caption">
-					        <h3>Chilli Garlic <br>Dip</h3>
-					        <p><a href="#" class="btn btn-primary" role="button">Know More</a> </p>
-					      </div>
-					  </div>
+					   <?php } ?>
+					  
 				 	</div> 	
 				</div>
 		  	</div>

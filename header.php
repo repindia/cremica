@@ -30,7 +30,7 @@
 			      <span class="icon-bar"></span>
 			      <span class="icon-bar"></span>
 			      </button>
-			      <a class="navbar-brand logo" href="index.html"><img src="<?php echo  get_option('logo_image'); ?>" alt="cremicalogo"/> </a>
+			      <a class="navbar-brand logo" href="<?php echo bloginfo('url'); ?>"><img src="<?php echo  get_option('logo_image'); ?>" alt="cremicalogo"/> </a>
 			   </div>
 			   <div class="collapse navbar-collapse header" id="example-navbar-collapse">
 			      <?php $menu_args = array(

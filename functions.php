@@ -34,6 +34,82 @@ add_theme_support( 'post-thumbnails' );
 
 /*
 |------------------------------------------------------------------------
+|    CUSTOM FUNCTIONS
+|------------------------------------------------------------------------
+*/
+
+
+// ------------- Make all Wordpress Categories use their Parent Category Template --//
+
+function load_cat_parent_template() {
+    global $wp_query;
+
+    if (!$wp_query->is_category)
+        return true; // saves a bit of nesting
+
+    // get current category object
+    $cat = $wp_query->get_queried_object();
+
+    // trace back the parent hierarchy and locate a template
+    while ($cat && !is_wp_error($cat)) {
+        $template = TEMPLATEPATH . "/category-{$cat->slug}.php";
+
+        if (file_exists($template)) {
+            load_template($template);
+            exit;
+        }
+
+        $cat = $cat->parent ? get_category($cat->parent) : false;
+    }
+}
+add_action('template_redirect', 'load_cat_parent_template');
+
+
+//------------- POST THUMBNAIL COLUMN IN PAGE -----------------//
+
+// Adds Post Thumbnail Column in admin post page
+
+add_filter('manage_posts_columns', 'post_thumbnail_columns_head');
+add_action('manage_posts_custom_column', 'post_thumbnail_columns_content', 10, 2);
+
+function post_thumbnail_columns_head($defaults) {
+    $defaults['featured_image'] = 'Featured Image';
+    return $defaults;
+}
+ 
+// SHOW THE FEATURED IMAGE
+function post_thumbnail_columns_content($column_name, $post_ID) {
+    if ($column_name == 'featured_image') {
+        $post_featured_image = thumbnail_get_featured_image($post_ID);
+        if ($post_featured_image) {
+            echo '<img src="' . $post_featured_image . '" />';
+        }
+    }
+}
+
+// GET FEATURED IMAGE
+function thumbnail_get_featured_image($post_ID) {
+    $post_thumbnail_id = get_post_thumbnail_id($post_ID);
+    if ($post_thumbnail_id) {
+        $post_thumbnail_img = wp_get_attachment_image_src($post_thumbnail_id, 'featured_preview');
+        return $post_thumbnail_img[0];
+    }
+}
+
+/*
+|------------------------------------------------------------------------
+|    HELPER FUNCTIONS
+|------------------------------------------------------------------------
+*/
+
+function is_subcategory (){
+    $cat = get_query_var('cat');
+    $category = get_category($cat);
+    return ( $category->parent == '0' ) ? false : true;
+}
+
+/*
+|------------------------------------------------------------------------
 |	REGISTER STYLE FOR ADMIN AREA
 |------------------------------------------------------------------------
 */
@@ -257,7 +333,7 @@ function custom_news_post_type() {
 add_action( 'init', 'custom_news_post_type' );
 
 
-// ------------------------- 4. CUSTOM EVENTS POST TYPE ----------------------//
+// ------------------------- 5. CUSTOM EVENTS POST TYPE ----------------------//
 
 
 function custom_events_post_type() {
@@ -296,6 +372,87 @@ function custom_events_post_type() {
 }
 
 add_action( 'init', 'custom_events_post_type' );
+
+
+// ------------------------- 6. FOOD SERVICES CLIENT POST TYPE ----------------------//
+
+
+function custom_client_post_type() {
+
+    $labels = array(
+
+        'name'               => _x( 'Clients', 'post type general name' ),
+        'singular_name'      => _x( 'Clients', 'post type singular name' ),
+        'add_new'            => _x( 'Add New Client', 'article' ),
+        'add_new_item'       => __( 'Add New Client' ),
+        'edit_item'          => __( 'Edit Client' ),
+        'new_item'           => __( 'New Client' ),
+        'all_items'          => __( 'All Client' ),
+        'view_item'          => __( 'View Client' ),
+        'search_items'       => __( 'Search Clients' ),
+        'not_found'          => __( 'No Clients found' ),
+        'not_found_in_trash' => __( 'No Clients found in the Trash' ),
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Clients'
+
+    );
+
+    $args = array(
+        'labels'        => $labels,
+        'description'   => 'Holds our Clients and Client specific data',
+        'public'        => true,
+        'menu_position' => 5,
+        'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+        'has_archive'   => false,
+    );
+
+    register_post_type( 'client', $args );
+
+    flush_rewrite_rules();
+
+}
+
+add_action( 'init', 'custom_client_post_type' );
+
+// ------------------------- 6. FOOD SERVICES CLIENT POST TYPE ----------------------//
+
+
+function custom_testimonial_post_type() {
+
+    $labels = array(
+
+        'name'               => _x( 'Testimonials', 'post type general name' ),
+        'singular_name'      => _x( 'Testimonials', 'post type singular name' ),
+        'add_new'            => _x( 'Add New Testimonial', 'article' ),
+        'add_new_item'       => __( 'Add New Testimonial' ),
+        'edit_item'          => __( 'Edit Testimonial' ),
+        'new_item'           => __( 'New Testimonial' ),
+        'all_items'          => __( 'All Testimonial' ),
+        'view_item'          => __( 'View Testimonial' ),
+        'search_items'       => __( 'Search Testimonials' ),
+        'not_found'          => __( 'No Testimonials found' ),
+        'not_found_in_trash' => __( 'No Testimonials found in the Trash' ),
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Testimonials'
+
+    );
+
+    $args = array(
+        'labels'        => $labels,
+        'description'   => 'Holds our Testimonials and Testimonial specific data',
+        'public'        => true,
+        'menu_position' => 5,
+        'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+        'has_archive'   => false,
+    );
+
+    register_post_type( 'testimonial', $args );
+
+    flush_rewrite_rules();
+
+}
+
+add_action( 'init', 'custom_testimonial_post_type' );
 
 
 /*-----------------------------------------------------------------------------------------------

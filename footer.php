@@ -29,6 +29,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri();?>/slider/css/slide.css" />
 	<script type="text/javascript" src="<?php echo get_template_directory_uri();?>/slider/js/modernizr.custom.28468.js"></script>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri();?>/slider/js/jquery.cslider.js"></script>
+	<script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('#da-slider').cslider({
