@@ -405,6 +405,15 @@ function theme_options_menu() {
 	    'theme_options_display'     // The name of the function to call when rendering this menu's page
 	);
 
+    add_submenu_page( 
+        'theme_options', 
+        'Contact Details', 
+        'Contact Details', 
+        'manage_options', 
+        'contact_details', 
+        'contact_details_render' 
+    );
+
 } // end theme_options_menu
 
 add_action('admin_menu', 'theme_options_menu');
@@ -428,9 +437,28 @@ function theme_options_display() { ?>
 
 } // end theme_options_display
 
+// CONTACT DETAILS RENDER FUNCTION
+function contact_details_render(){ ?>
+
+<div class="wrap">
+        <!-- Make a call to the WordPress function for rendering errors when settings are saved. -->
+        <?php settings_errors(); ?>
+        <!-- Create the form that will be used to render our options -->
+        <form method="post" action="options.php">
+
+        <?php
+            settings_fields( 'contact_details_settings_section' );
+            do_settings_sections( 'contact_details' );
+
+            submit_button(); ?>
+        </form>
+    </div><!-- /.wrap -->
+
+    <?php
+}
 
 /* ------------------------------------------------------------------------ *
- * Setting Registration
+ * Setting Registration - THEME OPTIONS
  * ------------------------------------------------------------------------ */
 
 function initialize_theme_options() {
@@ -508,10 +536,91 @@ function initialize_theme_options() {
     );
 
 
+} // end initialize_theme_options
+
+
+/* ------------------------------------------------------------------------ *
+ * Setting Registration - CONTACT DETAILS
+ * ------------------------------------------------------------------------ */
+
+function initialize_contact_details_options() {
+    
+    // Registering General section
+
+    add_settings_section(
+        'contact_details_settings_section',                 // ID used to identify this section and with which to register options
+        'Contact Details Options',                            // Title to be displayed on the administration page
+        'contact_details_options_callback',                 // Callback used to render the description of the section
+        'contact_details'                             // Page on which to add this section of options
+    );
+
+    // Setting Fields - Contact Title
+    add_settings_field(
+        'contact_title',
+        'Contact Title',
+        'contact_title_callback',
+        'contact_details',
+        'contact_details_settings_section',
+        array(
+            'Title for Contact Page'
+        )
+    );
+
+    // Registe Setting - Contact Title
+
+    register_setting(
+        'contact_details_settings_section',
+        'contact_title'
+    );
+
+    // Setting Fields - Contact Content
+    add_settings_field(
+        'contact_content',
+        'Contact Content',
+        'contact_content_callback',
+        'contact_details',
+        'contact_details_settings_section',
+        array(
+            'Title for Contact Page'
+        )
+    );
+
+    // Registe Setting - Contact Title
+
+    register_setting(
+        'contact_details_settings_section',
+        'contact_content'
+    );
+
+
+    // Setting Fields - Contact MAP
+    add_settings_field(
+        'contact_map',
+        'Contact Map',
+        'contact_map_callback',
+        'contact_details',
+        'contact_details_settings_section',
+        array(
+            'Iframe Code for Contact Page'
+        )
+    );
+
+    // Registe Setting - Contact MAP
+
+    register_setting(
+        'contact_details_settings_section',
+        'contact_map'
+    );
+
+    
 
 } // end initialize_theme_options
 
 add_action('admin_init', 'initialize_theme_options');
+
+add_action('admin_init', 'initialize_contact_details_options');
+
+
 
 /* ------------------------------------------------------------------------ *
  * Section Callbacks - Functions to render Secton Description
@@ -521,8 +630,14 @@ function general_options_callback() {
     echo '<p>set options value for the theme</p>';
 }
 
+function contact_details_options_callback() {
+    echo '<p>Set Option values for Contact Details</p>';
+}
+
+
+
 /* ------------------------------------------------------------------------ *
- * Field Callbacks - Functions to render the Fields
+ * Field Callbacks - Functions to render the Fields - THEME OPTIONS
  * ------------------------------------------------------------------------ */
 
 // LOGO IMAGE
@@ -547,6 +662,31 @@ function homepage_slider_bg_img_callback($args) {
 //HOMEPAGE JOURNEY TITLE
 function homepage_journey_title_callback($args) {
     $html = '<input type="text" class="regular-text" name="homepage_journey_title" value="'. get_option('homepage_journey_title') . '">';
+    echo $html;
+}
+
+/* ------------------------------------------------------------------------ *
+ * Field Callbacks - Functions to render the Fields - CONTACT DETAILS
+ * ------------------------------------------------------------------------ */
+
+//  CONTACT TITLE 
+function contact_title_callback($args) {
+    $html = '<input type="text" class="regular-text" name="contact_title" value="'. get_option('contact_title') . '">';
+    echo $html;
+}
+
+
+//  CONTACT CONTENT 
+function contact_content_callback($args) {
+    $content =  get_option('contact_content');
+    $editor_id = 'contact_content';
+
+    echo wp_editor( $content, $editor_id );
+}
+
+//  CONTACT MAP 
+function contact_map_callback($args) {
+    $html = '<textarea name="contact_map" rows="10" cols="50" id="contact_map" class="large-text code">'. get_option('contact_map') . '</textarea>';
     echo $html;
 }
 

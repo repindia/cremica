@@ -18,7 +18,7 @@
 <div id="content"><!-- preloader div -->
 
 <!-- header start -->
-<header>
+<header class="head-animation">
 	<div class="header-arrow <?php if(!is_home()) echo 'shadow'; ?>">
 		<div class="container-fluid">
 			<nav class="navbar navbar-default head-nav" role="navigation">

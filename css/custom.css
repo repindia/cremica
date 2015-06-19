@@ -38,6 +38,53 @@ body {
 /*-- home page
 ================================================== --*/
 
+.head-animation {
+  width: 100%;
+  height:160px;
+  position: fixed !important;
+  z-index:9999;
+  top: 0;
+  left: 0;
+  -moz-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  -moz-transition-property: height, top;
+  -o-transition-property: height, top;
+  -webkit-transition-property: height, top;
+  transition-property: height, top;
+ /* -moz-box-shadow: rgba(30, 50, 50, 0.25) 0 0.05em 0.5em;
+  -webkit-box-shadow: rgba(30, 50, 50, 0.25) 0 0.05em 0.5em;
+  box-shadow: rgba(30, 50, 50, 0.25) 0 0.05em 0.5em;*/
+}
+.head-animation.scrolling {
+  height:160px;
+    -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+}
+.head-animation.hide {
+  top: -160px;
+    -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+}
+
+.head-animation nav {
+  height: 100%;
+}
+
+
+
+
+
+
 .header {
 	height:160px !important;
 	position:relative;
@@ -158,7 +205,7 @@ ul.nav.navbar-nav.head-nav-ul.sm li ul {
    	 position: absolute;
     z-index: 1000;
     padding-left: 0;
-    min-width: 160px;
+    min-width: 200px;
      -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .3s;
     -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .3s;
     -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .3s;
@@ -205,6 +252,7 @@ ul.nav.navbar-nav.head-nav-ul.sm > li {
 	height:auto;
 	width:100%;
 	position:relative;
+	margin-top: 160px;
 }
 .header-slider {
 	padding:0px !important;
