@@ -89,8 +89,7 @@ get_header(); ?>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="products-border">
 						<p>
-							Found something Delicious and <br> need obscene amounts of it?
-							<span>Contact us for that bulk order.</span>
+							<?php echo get_option('query_title')?>
 						</p>
 					</div>
 				</div>

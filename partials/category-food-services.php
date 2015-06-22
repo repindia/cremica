@@ -1,6 +1,7 @@
 
 
 
+<h2><?php echo $myRollNo;?></h2>
 <!-- Food Services container -->
 	<section class="products-container recipes-fac-border">
 		<div class="container ">
@@ -99,11 +100,11 @@
 						        
 						      </div>
 						      <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
-						        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"> <img src="images/news/prev.png" alt=""> </span>
+						        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"> <img src="<?php echo get_template_directory_uri(); ?>/images/news/prev.png" alt=""> </span>
 						        <span class="sr-only">Previous</span>
 						      </a>
 						      <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
-						        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> <img src="images/news/next.png" alt=""></span>
+						        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> <img src="<?php echo get_template_directory_uri(); ?>/images/news/next.png" alt=""></span>
 						        <span class="sr-only">Next</span>
 						      </a>
 						    </div>

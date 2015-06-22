@@ -87,12 +87,12 @@ get_header();?>
 					<div class="col-xs-12 col-sm-12 col-md-3"></div>
 				</div>
 				<div class="our-origin">
-					<a href="javascript:void(0)" rel="tab1"><img src="images/about/Origin-arrow.png"/></a>
+					<a href="javascript:void(0)" rel="tab1"><img src="<?php echo get_template_directory_uri(); ?>/images/about/Origin-arrow.png"/></a>
 					<a href="javascript:void(0)" rel="tab1">Our Origin</a>
 				</div>
 				<div class="our-vision">
 					<a href="javascript:void(0)" rel="tab3">Our Vision</a>
-					<a href="javascript:void(0)" rel="tab3"><img src="images/about/vision-arrow.png"/></a>
+					<a href="javascript:void(0)" rel="tab3"><img src="<?php echo get_template_directory_uri(); ?>/images/about/vision-arrow.png"/></a>
 				</div>
 				
 		  	</div>

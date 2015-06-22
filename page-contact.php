@@ -45,12 +45,12 @@ get_header();?>
 					</div>
 				</div>
 				<div class="our-origin">
-					<a href="javascript:void(0)" rel="tab1"><img src="images/about/Origin-arrow.png"/></a>
+					<a href="javascript:void(0)" rel="tab1"><img src="<?php echo get_template_directory_uri(); ?>/images/about/Origin-arrow.png"/></a>
 					<a href="javascript:void(0)" rel="tab2">Careers</a>
 				</div>
 				<div class="our-vision">
 					<a href="javascript:void(0)" rel="tab3">Location</a>
-					<a href="javascript:void(0)" rel="tab1"><img src="images/about/vision-arrow.png"/></a>
+					<a href="javascript:void(0)" rel="tab1"><img src="<?php echo get_template_directory_uri(); ?>/images/about/vision-arrow.png"/></a>
 				</div>
 				
 		  	</div>

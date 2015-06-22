@@ -693,6 +693,25 @@ function initialize_theme_options() {
     );
 
 
+    // Setting Fields - Product Page Query Content
+    add_settings_field(
+        'query_title',
+        'Product Page Query Text',
+        'query_title_callback',
+        'theme_options',
+        'general_settings_section',
+        array(
+            'Title for Query Text on Productpage'
+        )
+    );
+
+    // Registe Setting - Product Page Query (( General Options ))
+
+    register_setting(
+        'general_settings_section',
+        'query_title'
+    );
+
 } // end initialize_theme_options
 
 
@@ -820,6 +839,16 @@ function homepage_slider_bg_img_callback($args) {
 function homepage_journey_title_callback($args) {
     $html = '<input type="text" class="regular-text" name="homepage_journey_title" value="'. get_option('homepage_journey_title') . '">';
     echo $html;
+}
+
+
+
+//  PRODUCT PAGE QUERY CONTENT 
+function query_title_callback($args) {
+    $content =  get_option('query_title');
+    $editor_id = 'query_title';
+
+    echo wp_editor( $content, $editor_id );
 }
 
 /* ------------------------------------------------------------------------ *

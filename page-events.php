@@ -60,7 +60,7 @@ get_header();?>
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				<div id="page-selection" class="news-pager">
 					<ul class="pagination bootpag">
-					   <li data-lp="5" class="prev"><a href="javascript:void(0);"> <img src="images/news/prev.png" alt=""/> </a></li>
+					   <li data-lp="5" class="prev"><a href="javascript:void(0);"> <img src="<?php echo get_template_directory_uri(); ?>/images/news/prev.png" alt=""/> </a></li>
 					   <li data-lp="1" class=""><a href="javascript:void(0);">1</a></li>
 					   <li data-lp="2" class=""><a href="javascript:void(0);">2</a></li>
 					   <li data-lp="3" class=""><a href="javascript:void(0);">3</a></li>
@@ -68,7 +68,7 @@ get_header();?>
 					   <li data-lp="5" class="" style="display: inline;"><a href="javascript:void(0);">5</a></li>
 					   <li data-lp="6" class="active" style="display: inline;"><a href="javascript:void(0);">6</a></li>
 					   <li data-lp="7" class="" style="display: inline;"><a href="javascript:void(0);">7</a></li>
-					   <li data-lp="11" class="next"><a href="javascript:void(0);"><img src="images/news/next.png" alt=""/></a></li>
+					   <li data-lp="11" class="next"><a href="javascript:void(0);"><img src="<?php echo get_template_directory_uri(); ?>/images/news/next.png" alt=""/></a></li>
 					</ul>
 				</div>
 			</div>

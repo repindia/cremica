@@ -58,7 +58,7 @@ get_header();?>
 						<li data-lp="5" class="" style="display: inline;"><a href="javascript:void(0);">5</a></li>
 						<li data-lp="6" class="active" style="display: inline;"><a href="javascript:void(0);">6</a></li>
 						<li data-lp="7" class="" style="display: inline;"><a href="javascript:void(0);">7</a></li>
-						<li data-lp="11" class="next"><a href="javascript:void(0);"><img src="images/news/next.png" alt=""/></a></li>
+						<li data-lp="11" class="next"><a href="javascript:void(0);"><img src="<?php echo get_template_directory_uri(); ?>/images/news/next.png" alt=""/></a></li>
 					</ul>
 				</div>
 			</div>
