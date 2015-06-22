@@ -671,6 +671,29 @@ function initialize_theme_options() {
         'homepage_slider_bg_img'
     );
 
+    // ----------------- RECIPE PAGE SLIDER BACKGROUND IMAGE -----------------------//
+
+    // Setting Fields - General Page
+    add_settings_field(
+        'recipe_slider_bg_img',
+        'Recipe Page Slider BG',
+        'recipe_slider_bg_img_callback',
+        'theme_options',
+        'general_settings_section',
+        array(
+            'Background Image for Recipe Page Slider'
+        )
+    );
+
+    // Registe Setting - General Options
+
+    register_setting(
+        'general_settings_section',
+        'recipe_slider_bg_img'
+    );
+
+
+
     // ----------------- HOMEPAGE JOURNEY TITLE TEXT -----------------------//
 
     // Setting Fields - General Page
@@ -711,6 +734,12 @@ function initialize_theme_options() {
         'general_settings_section',
         'query_title'
     );
+
+
+
+
+
+
 
 } // end initialize_theme_options
 
@@ -830,6 +859,15 @@ function homepage_slider_bg_img_callback($args) {
     $html = '<img class="theme_options_bg" src="'. get_option('homepage_slider_bg_img') . '">';
     $html .= '<input id="homepage_slider_bg_img" class="facebook-url regular-text" type="hidden" name="homepage_slider_bg_img" value="' . get_option('homepage_slider_bg_img') . '" />';
     $html .= '<button class="upload_bg_button button button-primary">Upload</button>';
+    $html .= '<p class="option-hint">' . $args[0] . '</p>';
+    echo $html;
+}
+
+// RECIPE SLIDER BG IMAGE
+function recipe_slider_bg_img_callback($args) {
+    $html = '<img class="theme_options_recipe_slider_bg" src="'. get_option('recipe_slider_bg_img') . '">';
+    $html .= '<input id="recipe_slider_bg_img" class="regular-text" type="hidden" name="recipe_slider_bg_img" value="' . get_option('recipe_slider_bg_img') . '" />';
+    $html .= '<button class="upload_recipe_bg_button button button-primary">Upload</button>';
     $html .= '<p class="option-hint">' . $args[0] . '</p>';
     echo $html;
 }
