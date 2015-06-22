@@ -37,12 +37,16 @@ get_header(); ?>
 					 	<!-- current tab one -->
 						<div class="product-container" id="product-1"> 
 							<?php 
+								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 								$args = array(
-									  'category' => get_query_var('cat')
+									  'category' => get_query_var('cat'),
+									  'numberposts' => 2,
+									  'paged' => $paged,
 									);
 							 	$products = get_posts($args);
 
-							foreach ($products as $product) { ?>
+							foreach ($products as $product) :  setup_postdata($product);
+								?>
 							
 							<div class="col-sm-6 col-md-3">
 							    <div class="thumbnail">
@@ -58,12 +62,14 @@ get_header(); ?>
 							      </div>
 							    </div>
 							</div>
-						 <?php } ?>
+						 <?php endforeach;
+						 	
+						 ?>
 
 					 	</div> 
 
 					 </div>
-					<div id="page-selection" class="news-pager">
+					<div id="page-selection" class="news-pager" style="display:none;">
 						<ul class="pagination bootpag">
 						   <li data-lp="5" class="prev"><a href="javascript:void(0);">  </a></li>
 						   <li data-lp="1" class=""><a href="javascript:void(0);">1</a></li>
