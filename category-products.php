@@ -41,7 +41,7 @@ get_header(); ?>
 								$args = array(
 									  	'cat' => get_query_var('cat'),
 									 	'paged' => $paged,
-                                 		'post_per_page' => 2
+                                 		'posts_per_page' => 3
 									);
 							 	$products = new WP_Query($args);
 
