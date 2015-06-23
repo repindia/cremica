@@ -71,10 +71,10 @@
 				  	
 					  <div class="col-sm-6 col-md-2 <?php if( $category->slug == $current_category->slug){ echo 'active"';}?> ">
 					    <div class="thumbnail">
-					      <a href="<?php echo bloginfo('url');?>/category/food-services/<?php echo $category->slug;?>"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" alt="thousand"></a>
+					      <a href="<?php echo bloginfo('url');?>/category/recipes/<?php echo $category->slug;?>"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" alt="thousand"></a>
 					    </div>
 					     <div class="caption">
-					        <p><a href="<?php echo bloginfo('url');?>/category/food-services/<?php echo $category->slug;?>" class="btn btn-primary" role="button"><?php echo $category->name;?></a> </p>
+					        <p><a href="<?php echo bloginfo('url');?>/category/recipes/<?php echo $category->slug;?>" class="btn btn-primary" role="button"><?php echo $category->name;?></a> </p>
 					      </div>
 					  </div>
 

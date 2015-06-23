@@ -39,22 +39,21 @@ get_header(); ?>
 							<?php 
 								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 								$args = array(
-									  'category' => get_query_var('cat'),
-									  'numberposts' => 2,
-									  'paged' => $paged,
+									  	'cat' => get_query_var('cat'),
+									 	'paged' => $paged,
+                                 		'post_per_page' => 2
 									);
-							 	$products = get_posts($args);
+							 	$products = new WP_Query($args);
 
-							foreach ($products as $product) :  setup_postdata($product);
-								?>
+							while ($products->have_posts()) : $products->the_post(); ?>
 							
 							<div class="col-sm-6 col-md-3">
 							    <div class="thumbnail">
-							    	<?php  $url = wp_get_attachment_url( get_post_thumbnail_id($product->ID) ); ?>
+							    	<?php  $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
 							      <a href=""><img src="<?php echo $url; ?>" alt="thousand"></a>
 							    </div>
 							    <div class="caption">
-							       <h3><?php echo $product->post_title; ?></h3>
+							       <h3><?php echo $post->post_title; ?></h3>
 							       <div class="product-button">
 							      	 <a href="#">Shop</a> 
 							      	 <a href="#">Info</a> 
@@ -62,14 +61,13 @@ get_header(); ?>
 							      </div>
 							    </div>
 							</div>
-						 <?php endforeach;
-						 	
-						 ?>
+						 <?php endwhile; ?>
 
 					 	</div> 
 
 					 </div>
-					<div id="page-selection" class="news-pager" style="display:none;">
+					 <?php wp_pagenavi( array( 'query' => $products ) ); ?>
+					<div id="page-selection" class="news-pager" >
 						<ul class="pagination bootpag">
 						   <li data-lp="5" class="prev"><a href="javascript:void(0);">  </a></li>
 						   <li data-lp="1" class=""><a href="javascript:void(0);">1</a></li>

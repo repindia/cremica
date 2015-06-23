@@ -13,13 +13,10 @@
 	if(is_subcategory())
 	{
 		$parent_cat = $current_category->parent; 
-
 		$parent_category = get_category( $parent_cat );
-
 		$parentCategoryName = $parent_category->name;
-
+		
 		$args = array('child_of' => $parent_cat , 'hide_empty' => 0);
-
 		$categories = get_categories( $args );
 
 		// Sending Data to Template Part
