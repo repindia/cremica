@@ -1,0 +1,29 @@
+#overlay {
+  background:#d3be7e;
+  width: 100%;
+  z-index: 3000;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.overlay-bar {
+	background-color:#6d5941;
+	height:3px;
+	width:0px;
+	top:50%;
+	position: absolute;
+	z-index: 99;
+}
+div#overlay-percentage {
+    position: absolute;
+    z-index: 4000;
+    width: 100%;
+    text-align: center;
+    top: 43%;
+    font-weight: bold;
+    font-family: 'lazing_on_a_sunny_afternoonRg';
+  	font-size:40px;
+  	color: #6d5941;
+}

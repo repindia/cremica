@@ -42,7 +42,7 @@
 						   	
 					 	</div> 
 					 </div>
-					<div id="page-selection" class="news-pager">
+					<!-- <div id="page-selection" class="news-pager">
 						<ul class="pagination bootpag">
 						   <li data-lp="5" class="prev"><a href="javascript:void(0);">  </a></li>
 						   <li data-lp="1" class=""><a href="javascript:void(0);">1</a></li>
@@ -54,7 +54,7 @@
 						   <li data-lp="7" class="" style="display: inline;"><a href="javascript:void(0);">7</a></li>
 						   <li data-lp="11" class="next"><a href="javascript:void(0);"><img src="images/news/next.png" alt=""/></a></li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 		  	</div>
 		</div>

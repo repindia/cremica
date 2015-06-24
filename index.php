@@ -135,7 +135,7 @@
 				  	
 				  	<?php 
 					$args = array(
-						'category' => get_query_var('cat'),
+						'category_name' => 'products',
 						'numberposts' => 4
 					);
 

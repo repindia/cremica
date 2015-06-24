@@ -99,40 +99,31 @@
 					 	<!-- current tab one -->
 						<div class="product-container" id="product-1"> 
 							<?php 
+								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 								$args = array(
-									  'category' => get_query_var('cat')
+									  	'cat' => get_query_var('cat'),
+									 	'paged' => $paged,
+                                 		'posts_per_page' => 3
 									);
-							 	$recipes = get_posts($args);
+							 	$recipes = new WP_Query($args);
 
-							foreach ($recipes as $recipe) { ?>
+							while ($recipes->have_posts()) : $recipes->the_post(); ?>
 						  	<div class="col-sm-6 col-md-3">
 							    <div class="thumbnail">
-							    	<?php  $url = wp_get_attachment_url( get_post_thumbnail_id($product->ID) ); ?>
+							    	<?php  $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
 							      <a href=""><img src="<?php echo $url; ?>" alt="thousand"></a>
 							    </div>
 							     <div class="caption">
-							        <h3><?php echo $recipe->post_title; ?></h3>
+							        <h3><?php echo $post->post_title; ?></h3>
 							        <p><a href="#" class="btn btn-primary" role="button">Get The Recipe</a> </p>
 							      </div>
 						  	</div>
 
-						  	<?php } ?>
+						  	 <?php endwhile; ?>
 					 	</div> 
 
 					 </div>
-					<div id="page-selection" class="news-pager">
-						<ul class="pagination bootpag">
-						   <li data-lp="5" class="prev"><a href="javascript:void(0);">  </a></li>
-						   <li data-lp="1" class=""><a href="javascript:void(0);">1</a></li>
-						   <li data-lp="2" class=""><a href="javascript:void(0);">2</a></li>
-						   <li data-lp="3" class=""><a href="javascript:void(0);">3</a></li>
-						   <li data-lp="4" class="" style="display: inline;"><a href="javascript:void(0);">4</a></li>
-						   <li data-lp="5" class="" style="display: inline;"><a href="javascript:void(0);">5</a></li>
-						   <li data-lp="6" class="active" style="display: inline;"><a href="javascript:void(0);">6</a></li>
-						   <li data-lp="7" class="" style="display: inline;"><a href="javascript:void(0);">7</a></li>
-						   <li data-lp="11" class="next"><a href="javascript:void(0);"><img src="images/news/next.png" alt=""/></a></li>
-						</ul>
-					</div>
+					<?php wp_pagenavi( array( 'query' => $recipes ) ); ?>
 				</div>
 		  	</div>
 		</div>

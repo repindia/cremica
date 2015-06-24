@@ -6,7 +6,7 @@
 	<title>Cremica</title>
 	<!-- include css styles -->
 	<link  type="text/css" rel="stylesheet" href="<?php echo get_template_directory_uri();?>/css/bootstrap.css">
-
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri();?>/preloader/preloader.css" />
 	<link  type="text/css" rel="stylesheet" href="<?php echo get_template_directory_uri();?>/css/custom.css">
 	<!-- end -->
 
@@ -15,12 +15,27 @@
 </head>
 <body>
 
-<div id="content"><!-- preloader div -->
+<div id="overlay"><!-- preloader div -->
+	<div id="overlay-percentage">
+		<span>0</span> %
+	</div>
+	<div class="overlay-bar">
+		
+	</div>
+</div>
 
 <!-- header start -->
-<header class="head-animation">
-	<div class="header-arrow <?php if(!is_home()) echo 'shadow'; ?>">
-		<div class="container-fluid">
+<!-- <div id="stickey_wrap">
+    <div id="stickey_header" class="clear">
+        <nav>
+            <h1>Prototype</h1>
+        </nav>
+    </div>
+</div> -->
+
+<header id="stickey_wrap">
+	<div class="header-arrow <?php if(!is_home()) echo 'shadow'; ?>" >
+		<div class="container-fluid" id="stickey_header">
 			<nav class="navbar navbar-default head-nav" role="navigation">
 			   <div class="navbar-header">
 			      <button type="button" class="navbar-toggle" data-toggle="collapse" 

@@ -20,11 +20,17 @@
 		</div>
 	</section>
 
-</div>
 	
 </body>
+	<!--preloader-->
+	<script src="<?php echo get_template_directory_uri();?>/preloader/createjs.js" type="text/javascript"></script>
+    <script src="<?php echo get_template_directory_uri();?>/preloader/preload.js" type="text/javascript"></script>
+    
+    <!-- end -->
+
 	<script  type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/custom.js"></script>
-	<!-- end -->
+	
+
 
 	<!-- slider js -->
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri();?>/slider/css/slide.css" />
@@ -43,4 +49,5 @@
 		});
 	</script>
 	<!-- END -->
+	
 </html>

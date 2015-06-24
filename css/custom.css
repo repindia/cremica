@@ -41,6 +41,45 @@ body {
 |------------------------------------------------------------------------
 */
 
+#stickey_wrap {
+	position:relative;
+	top:0px;
+	background: #fdfbf8;
+	z-index: 999;
+}
+
+.fixed:before {
+  position: absolute;
+  content: '';
+  bottom: -10px;
+  left: 0px;
+  width: 100%;
+  display: block;
+  border-style: solid;
+  border-width: 10px 0px 0px 0px;
+  -moz-border-image: url(../images/home/slider-top-arrow1.png) 10 0 0 0 repeat;
+  -webkit-border-image: url(../images/home/slider-top-arrow1.png) 10 0 0 0 repeat;
+  -o-border-image: url(../images/home/slider-top-arrow1.png) 10 0 0 0 repeat;
+  /* border-image: url(../images/home/slider-top-arrow1.png) 10 0 0 0 repeat; */
+  z-index: 999;
+}
+
+#stickey_header {
+    width: 100%;
+    z-index:1000;
+}
+
+.fixed {
+    position: fixed;
+    top:0;
+    background: #fdfbf8;
+    box-shadow: -5px 5px 22px #B8B8B8;
+}
+
+
+
+
+
 
 .header {
 	height:160px !important;
@@ -48,6 +87,7 @@ body {
 }
 .header-arrow {
 	position:relative;
+	background-image: url(../images/home/body-bg.jpg);
 }
 .header-arrow:before {
 	position:absolute;
@@ -57,14 +97,14 @@ body {
 	display:block;
 	border-style: solid;
 	border-width: 10px 0px 0px 0px;
-	-moz-border-image: url../images/home/slider-top-arrow.png) 10 0 0 0 repeat;
-	-webkit-border-image: url(../images/home/slider-top-arrow.png) 10 0 0 0 repeat;
-	-o-border-image: url(../images/home/slider-top-arrow.png) 10 0 0 0repeat;
-	border-image:url(../images/home/slider-top-arrow.png) 10 0 0 0 repeat;
+	-moz-border-image: url(../images/home/slider-top-arrow1.png) 10 0 0 0 repeat;
+	-webkit-border-image: url(../images/home/slider-top-arrow1.png) 10 0 0 0 repeat;
+	-o-border-image: url(../images/home/slider-top-arrow1.png) 10 0 0 0repeat;
+	border-image:url(../images/home/slider-top-arrow1.png) 10 0 0 0 repeat;
 	z-index: 999;
 }
 .shadow {
-	background:#EFEFEF;
+	background:#fdfbf8;
 	box-shadow:-5px 5px 22px #B8B8B8;
 }
 .logo {
@@ -421,21 +461,54 @@ ul.tabs li a.active {
 	-webkit-border-image: url(../images/home/pro-bor.png) 5 repeat;
 	-o-border-image: url(../images/home/pro-bor.png) 5 repeat;
 	border-image: url(../images/home/pro-bor.png) 5 repeat;
-	opacity:0.6;
+	/*opacity:0.6;*/
+	overflow:hidden;
+	position: relative; 
+}
+.product-container .thumbnail  > .special_offer{
+	position:absolute;
+	top: 10px;
+	right: 10px;
+}
+.product-container .thumbnail  > .special_offer img:hover{
+	-webkit-transform:scale(1); /* Safari and Chrome */
+    -moz-transform:scale(1); /* Firefox */
+    -ms-transform:scale(1); /* IE 9 */
+    -o-transform:scale(1); /* Opera */
+     transform:scale(1);
+}
+.product-container .thumbnail img {
+	-webkit-transition: all 1s ease; /* Safari and Chrome */
+  	-moz-transition: all 1s ease; /* Firefox */
+  	-o-transition: all 1s ease; /* IE 9 */
+  	-ms-transition: all 1s ease; /* Opera */
+  	transition: all 1s ease;
+
+}
+.product-container .thumbnail img:hover {
+	-webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+
 }
 .product-container .thumbnail:hover{
-	opacity:1;
+	/*opacity:1;*/
 	transition: all 0.7s linear;
 	-webkit-transition: all 0.3s linear;
 	-moz-transition: all 0.3s linear;
 	-o-transition: all 0.3s linear;
 	-ms-transition: all 0.3s linear;
+	
 }
 .product-container h3{
    font-family:'lazing_on_a_sunny_afternoonRg';
 	font-size:20px;
 	color:#6d5941;
 	  height: 45px;
+	  width: 118px;
+  margin: auto;
 }
 .product-container a{
    font-family:'lazing_on_a_sunny_afternoonRg';
@@ -446,6 +519,7 @@ ul.tabs li a.active {
 }
 .product-container a:hover {
 	background-color: #6d5941;
+	color:#c6aa56;
 	transition: all 0.7s linear;
 	-webkit-transition: all 0.3s linear;
 	-moz-transition: all 0.3s linear;
@@ -460,7 +534,8 @@ ul.tabs li a.active {
 
 .footer .container {
 	font-family:'FedraSansStd-Medium';
-	background-image:url(../images/home/footer-bg.jpg);
+	/*background-image:url(../images/home/footer-bg.jpg);*/
+	background-color:#000;
 	color:#fff;
 	line-height:98px;
 	font-size:10px;
@@ -499,7 +574,7 @@ ABOUT US
 
 
 .about-us {
-	padding: 80px 0px;
+	padding:80px 0px;
 	text-align: center;
 	border-bottom: none;
 }
@@ -508,6 +583,10 @@ ABOUT US
 }
 .about-container {
 	display:none;
+}
+
+.about-container.active{
+	display: block;
 }
 .about-container {
 	padding-top:70px;
@@ -698,7 +777,37 @@ NEWS PAGE
 .news .product-container {
 	margin:0px;
 }
-.news-pager{
+.wp-pagenavi {
+	padding:50px 0px 100px 0px;
+	clear:both;
+	margin:auto;
+	width:316px;
+}
+.wp-pagenavi span {
+	font-family: 'lazing_on_a_sunny_afternoonRg';
+	font-size: 20px;
+	background-color:transparent !important;
+	border:none !important;
+	color:#6f573d !important;
+	padding: 4px 12px !important;
+	text-decoration: none;
+}
+.wp-pagenavi a {
+	font-family: 'lazing_on_a_sunny_afternoonRg';
+	font-size: 20px;
+	background-color:transparent !important;
+	border:none !important;
+	color:#6f573d !important;
+	padding: 4px 12px !important;
+	text-decoration: none;
+}
+.wp-pagenavi .current {
+	color:#c6aa56 !important;
+}
+.nextpostslink {
+	background-image:url(..images/news/next.png);
+}
+/*.news-pager{
 	padding:50px 0px 100px 0px;
 	clear:both;
 	margin:auto;
@@ -714,7 +823,7 @@ NEWS PAGE
 }
 .news-pager > .pagination > .active > a{
 	color:#c6aa56 !important;
-}
+}*/
 
 
 
@@ -826,6 +935,13 @@ RECIPES PAGE
  	padding:30px 0px 10px 0px;
  	margin-bottom:0px;
  	background:none;
+ }
+ .recipes-cat .thumbnail img:hover{
+ 	-webkit-transform:scale(1); /* Safari and Chrome */
+    -moz-transform:scale(1); /* Firefox */
+    -ms-transform:scale(1); /* IE 9 */
+    -o-transform:scale(1); /* Opera */
+     transform:scale(1);
  }
   .recipes-cat .caption {
  	margin-bottom:25px;
@@ -997,7 +1113,7 @@ PRODUCTS PAGE
 .products-container {
   border-bottom: dotted #c6aa56 2px;
   padding: 0px;
-  margin: 80px 0px;
+  margin:80px 0px;
   text-align: center;
 }
 .products-container .product-container {
@@ -1007,13 +1123,15 @@ PRODUCTS PAGE
 	padding:20px 0px; 
 }
 .product-button {
-	width:100%;
+	width:99%;
 	margin:auto;
 	background-color:#fff;
 	border:solid #c5a955 1px;
 	border-radius:5px;
-	margin:35px 0px 50px 0px;
 	height:30px;
+	margin:auto;
+	margin-bottom: 50px !important;
+	margin-top: 35px !important;
 }
 .product-button a {
   font-family: 'MinionPro-Regular';
@@ -1044,7 +1162,7 @@ PRODUCTS PAGE
 .product-button a:last-child:hover{
 	border-top-right-radius:4px;
 	border-bottom-right-radius:4px;
-	border-left:thick solid #6d5941;
+	/*border-left:thick solid #6d5941;*/
 }
 .product-button a:hover {
 	color:#c5a955;

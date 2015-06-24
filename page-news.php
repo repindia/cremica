@@ -27,40 +27,34 @@ get_header();?>
 					<!-- tab one -->
 					<div class="product-container"> 
 
-					<?php $args = array(
-						  'post_type'   => 'news',
-						  'post_status' => 'publish'
-						);
+						<?php 
 
-	  					$all_news = get_posts($args); 
-	
-	  					foreach ($all_news as $news ) { ?>
+						$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+						$args = array(
+							  	'post_type' => 'news',
+							 	'paged' => $paged,
+                         		'posts_per_page' => 1,
+							);
+					 	$news = new WP_Query($args);
+
+
+	  					while ($news->have_posts()) : $news->the_post(); ?>
 
 						<div class="col-sm-6 col-md-3">
-							<?php  $url = wp_get_attachment_url( get_post_thumbnail_id($news->ID) ); ?>
+							<?php  $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
 							<div class="thumbnail" style="background-image:url(<?php echo $url; ?>);">
 							</div>
 							<div class="caption">
-								<h3><?php echo $news->post_title;?></h3>
+								<h3><?php echo $post->post_title;?></h3>
 								<p><a href="#" class="btn btn-primary" role="button">View</a> </p>
 							</div>
 						</div>
-					<?php } ?>
+					<?php endwhile; ?>
 					</div> 
 				</div>
-				<div id="page-selection" class="news-pager">
-					<ul class="pagination bootpag">
-						<li data-lp="5" class="prev"><a href="javascript:void(0);">  </a></li>
-						<li data-lp="1" class=""><a href="javascript:void(0);">1</a></li>
-						<li data-lp="2" class=""><a href="javascript:void(0);">2</a></li>
-						<li data-lp="3" class=""><a href="javascript:void(0);">3</a></li>
-						<li data-lp="4" class="" style="display: inline;"><a href="javascript:void(0);">4</a></li>
-						<li data-lp="5" class="" style="display: inline;"><a href="javascript:void(0);">5</a></li>
-						<li data-lp="6" class="active" style="display: inline;"><a href="javascript:void(0);">6</a></li>
-						<li data-lp="7" class="" style="display: inline;"><a href="javascript:void(0);">7</a></li>
-						<li data-lp="11" class="next"><a href="javascript:void(0);"><img src="<?php echo get_template_directory_uri(); ?>/images/news/next.png" alt=""/></a></li>
-					</ul>
-				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12">
+				<?php wp_pagenavi( array( 'query' => $news ) ); ?>
+			</div>
 			</div>
 		</div>
 	</div>

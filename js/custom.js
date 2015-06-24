@@ -27,7 +27,7 @@
           marginTopVal -= 27;
           anchorTag = nextItem.children('a');
           anchorTag.trigger('click');
-         $('.tabs').css({ marginTop : marginTopVal + 'px'});
+         $('.tabs').animate({ marginTop : marginTopVal + 'px'});
         } 
     });
     
@@ -38,7 +38,7 @@
           activeItem.removeClass('active');
           prevItem.addClass('active');
           marginTopVal += 27;
-         $('.tabs').css({ marginTop : marginTopVal + 'px'});
+         $('.tabs').animate({ marginTop : marginTopVal + 'px'});
 
           anchorTag = prevItem.children('a');
           anchorTag.trigger('click');
@@ -49,10 +49,28 @@
 
       
 /* ========================================================================
- * HOME PAGE HEADER ANIMATION
+ * HOME PAGE STICKEY HEADER ANIMATION
  * ======================================================================== */
+var previousScroll = 0,
+headerOrgOffset = $('#stickey_header').offset().top;
 
+$('#stickey_wrap').height($('#stickey_header').height());
 
+$(window).scroll(function() {
+    var currentScroll = $(this).scrollTop();
+    console.log(currentScroll + " and " + previousScroll + " and " + headerOrgOffset);
+    if(currentScroll > headerOrgOffset) {
+        if (currentScroll > previousScroll) {
+            $('#stickey_header').fadeOut(900);
+        } else {
+            $('#stickey_header').fadeIn(900);
+            $('#stickey_header').addClass('fixed');
+        }
+    } else {
+         $('#stickey_header').removeClass('fixed');   
+    }
+    previousScroll = currentScroll;
+});
 
 /* ========================================================================
  * About Us Company Profile Slide
@@ -60,46 +78,38 @@
 
 
  $(document).ready(function($) {
-    $(".about-container").hide();
-      $(".about-container:first").show(); 
-      $(".our-origin a:first-child").addClass("active");
+    $('.next-tab').click(function(event) {
+        that = $(this);
+        currentTab = $('.about-container.active');
+        nextTab = currentTab.next('.about-container');
+        nextToNext nextTab.next();
 
-      $(".our-origin a").click(function() {
-          $(".about-container").hide();
-           var activeTab = $(this).attr("rel"); 
-          $("#"+activeTab).fadeIn(1000); 
-          $(".our-origin a").removeClass("active");
-          $(this).addClass("active");
+        if(!nextToNext.length){
+          nextToNext = $('.about-container').first();
+        }
+
+        if(!nextTab.length){
+          nextTab = $('.about-container').first();
+          nextToNext = nextTab.next();
+          if(!nextToNext.length){
+            nextToNext = $('.about-container').first();
+          }
+        }
+        
+        
+        currentTab.fadeOut(400, function() {
+            currentTab.removeClass('active');
+            nextTab.fadeIn(400, function() {
+              nextTab.addClass('active');
+          });
+        }); 
+
+        $('.next-tab').find('.next-tab-title').text(nextToNext.data('title'));
+
+        
+
     });
 });
-  $(document).ready(function($) {
-    $(".about-container").hide();
-      $(".about-container:first").show(); 
-      $(".our-vision a:first-child").addClass("active");
-
-      $(".our-vision a").click(function() {
-          $(".about-container").hide();
-           var activeTab = $(this).attr("rel"); 
-          $("#"+activeTab).fadeIn(1000); 
-          $(".our-vision a").removeClass("active");
-          $(this).addClass("active");
-    });
-});
-
-/* ========================================================================
- * news pagination 
- * ======================================================================== */
-  
- // init bootpag
-        // $('#page-selection').bootpag({
-        //     total: 7,
-        //     next: '<img src="images/news/next.png" alt=""/>',
-        //      prev: '<img src="images/news/prev.png" alt=""/>',
-        // }).on("page", function(event, /* page number here */ num){
-        //       $("#content").fadeOut(300,function(){
-        //       $("#content").html($("#product-" + num ).html()).fadeIn(300);
-        //     });
-        // });
 
 
 /* ========================================================================

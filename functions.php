@@ -320,6 +320,7 @@ function custom_news_post_type() {
         'description'   => 'Holds our Journey and Journey  specific data',
         'public'        => true,
         'menu_position' => 5,
+        'rewrite' => array( 'slug' => 'new' ),
         'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
         'has_archive'   => false,
     );
@@ -361,6 +362,7 @@ function custom_events_post_type() {
         'description'   => 'Holds our Journey and Journey  specific data',
         'public'        => true,
         'menu_position' => 5,
+        'rewrite' => array( 'slug' => 'event' ),
         'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
         'has_archive'   => false,
     );

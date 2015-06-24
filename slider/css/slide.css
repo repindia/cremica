@@ -26,7 +26,7 @@
 	text-align: left;
 }
 .da-slide-current{
-	z-index: 1000;
+	z-index: 100;
 }
 .da-slider-fb .da-slide{
 	left: 100%;
@@ -154,7 +154,7 @@
 	border-radius: 50%;
 	/*background: #e4b42d;*/
 	cursor: pointer;
-	z-index: 2000;
+	z-index: 2;
 	opacity: 0;
 	/*box-shadow: 
 		1px 1px 1px rgba(0,0,0,0.1) inset, 
