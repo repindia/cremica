@@ -1248,7 +1248,9 @@ ENQUIRY PAGE
 	margin: auto;
 	margin-bottom:80px;
 }
-
+.products-enquiry p {
+	text-align: center;
+}
 .products-enquiry input{
 	font-family: 'lazing_on_a_sunny_afternoonRg';
 	font-size:18px;
@@ -1273,7 +1275,7 @@ ENQUIRY PAGE
 	height: 100px;
 	line-height: 18px;
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	background-color: #fff;
 	padding:38px 20px 38px 20px;
  }
@@ -1299,6 +1301,9 @@ ENQUIRY PAGE
 	color:#999999;
 	outline:none;
 	border:none;
+ }
+ .career-align p {
+ 	text-align:center !important;
  }
  .enquiry-address a:focus{
 	color:#999999;
@@ -1574,9 +1579,11 @@ ENQUIRY FORM PAGE
    color: #999999;
 }
 .enquiry-container .products-submit {
- 	background-color:#c6aa56 !important;
- 	color: #69573f !important;
- 	background-image:url(../images/enquiry/enquiry-arrow.png);
+	background-color:#c6aa56 !important;
+	color: #69573f !important;
+	background-image:url(../images/enquiry/enquiry-arrow.png);
+	display: block;
+	margin: auto;
  }
  .enquiry-container .our-origin {
 	margin-top: 60px;

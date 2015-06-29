@@ -26,7 +26,7 @@ get_header();?>
 		</div>
 		<div class="container">
 			<div class="row about-arrow">
-				<div class="about-container active" id="tab1" data-title="Company Profile">
+				<div class="about-container active" id="tab1" data-title="About">
 			 		 <div class="col-xs-12 col-sm-12 col-md-9">
 			 		 	<?php
 						$the_slug = 'company-profile';
@@ -87,8 +87,8 @@ get_header();?>
 					<div class="col-xs-12 col-sm-12 col-md-3"></div>
 				</div>
 				<div class="our-origin prev-tab">
-					<a href="javascript:void(0)" rel="tab1"><img src="<?php echo get_template_directory_uri(); ?>/images/about/Origin-arrow.png"/></a>
-					<a href="javascript:void(0)" rel="tab1">Our Origin</a>
+					<a href="javascript:void(0)" rel="tab1" ><img src="<?php echo get_template_directory_uri(); ?>/images/about/Origin-arrow.png"/></a>
+					<a href="javascript:void(0)" rel="tab1" class="prev-tab-title">Our Origin</a>
 				</div>
 				<div class="our-vision next-tab">
 					<a href="javascript:void(0)" rel="tab3" class="next-tab-title">Our Vision</a>
